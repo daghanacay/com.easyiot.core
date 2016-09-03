@@ -2,7 +2,7 @@
 # 
 #
 
-Bundle-Version: 2.0.0.${tstamp}
+Bundle-Version: 1.0.0.${tstamp}
 Bundle-Description: 				\
 	This is API for easyiot framework. This project should not not contain any implementation code. \
 	WARNING: Implementing bundles should export the API packages for successful resolution.  

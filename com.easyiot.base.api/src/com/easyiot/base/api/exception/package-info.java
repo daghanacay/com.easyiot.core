@@ -1,2 +1,2 @@
-@org.osgi.annotation.versioning.Version("1.1.0")
+@org.osgi.annotation.versioning.Version("1.0.0")
 package com.easyiot.base.api.exception;
