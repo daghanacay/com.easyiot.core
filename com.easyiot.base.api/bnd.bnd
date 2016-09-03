@@ -1,0 +1,26 @@
+#
+# 
+#
+
+Bundle-Version: 2.0.0.${tstamp}
+Bundle-Description: 				\
+	This is API for easyiot framework. This project should not not contain any implementation code. \
+	WARNING: Implementing bundles should export the API packages for successful resolution.  
+
+	
+Export-Package: \
+	com.easyiot.base.api;provide:=true,\
+	com.easyiot.base.api.exception,\
+	com.easyiot.base.executor;provide:=true
+
+
+Require-Capability: \
+	compile-only
+
+-buildpath: \
+	osgi.enroute.base.api;version=1.0
+
+-testpath: \
+	osgi.enroute.junit.wrapper;version=4.12
+	
+-includeresource: {readme.md}
