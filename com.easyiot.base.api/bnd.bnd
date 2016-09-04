@@ -11,7 +11,8 @@ Bundle-Description: 				\
 Export-Package: \
 	com.easyiot.base.api;provide:=true,\
 	com.easyiot.base.api.exception,\
-	com.easyiot.base.executor;provide:=true
+	com.easyiot.base.executor;provide:=true,\
+	com.easyiot.base.capability
 
 
 Require-Capability: \

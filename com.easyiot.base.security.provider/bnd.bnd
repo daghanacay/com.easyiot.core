@@ -11,13 +11,16 @@ Private-Package: \
 	com.easyiot.base.security.provider.auth,\
 	com.easyiot.base.security.provider.context
 	
--buildpath:  \
-	osgi.enroute.base.api;version=1.0
+-buildpath: \
+	osgi.enroute.base.api;version=1.0,\
+	com.easyiot.base.api;version=latest
 	
 -testpath: \
 	osgi.enroute.junit.wrapper;version=4.12
 
--includeresource: {readme.md}
+-includeresource: \
+    {readme.md}, \
+    {configuration=configuration}, \
 
 
 -runrequires:  \

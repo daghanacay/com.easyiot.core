@@ -13,12 +13,15 @@ import org.osgi.service.http.whiteboard.HttpWhiteboardConstants;
 import org.osgi.service.useradmin.User;
 import org.osgi.service.useradmin.UserAdmin;
 
+import com.easyiot.base.capability.WebSecurity.ProvideWebSecurity_v1_0_0;
+
 /**
  * Handles the security for devices endpoint
  * 
  * @author daghan
  *
  */
+@ProvideWebSecurity_v1_0_0
 @Component(service = ServletContextHelper.class, property = {
 		HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_NAME + "=devicesContext",
 		HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_PATH + "=/easyiot" })

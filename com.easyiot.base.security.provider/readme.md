@@ -9,7 +9,21 @@ ${Bundle-Description}
 	Pid: com.easyiot.security
 	
 	Field					Type				Description
-		
+	
+	[
+	  {
+	     "service.pid":"org.apache.felix.http",
+	     "org.apache.felix.http.enable":"false",
+	     "org.osgi.service.http.port":"8080",
+	     "org.apache.felix.https.enable":"true",
+	     "org.osgi.service.http.port.secure":"8433",
+	     "org.apache.felix.https.keystore":"configuration/ssl/keystore.jks",
+	     "org.apache.felix.https.keystore.password":"da_iot",
+	     "org.apache.felix.https.keystore.key.password":"da_iot",
+	     "org.apache.felix.https.truststore":"configuration/ssl/cacerts.jks",
+	     "org.apache.felix.https.truststore.type":"jks"
+	  }
+    ]	
 	
 ## References
 Creating ssl certificate and sign it

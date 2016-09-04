@@ -29,8 +29,8 @@ public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 	 * 
 	 * @param properties
 	 */
-	@Reference(service = Device.class, cardinality = ReferenceCardinality.MULTIPLE, policy = ReferencePolicy.DYNAMIC)
-	List<Device> devices = new CopyOnWriteArrayList<>();
+	@Reference
+	List<Device> devices;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -56,7 +56,7 @@ public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 						case GET:
 							// we found the method lets run it
 							try {
-								return (O) method.invoke(deviceService, new Object());
+								return (O) method.invoke(deviceService, null);
 							} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 								throw new NoSuchMethodException(method.getName());
 							}
