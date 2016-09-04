@@ -6,7 +6,7 @@ ${Bundle-Description}
 
 You can access your device end point using the following
 
-[domain]/easyiot/[deviceId]
+[domain]/easyiot/devices/[deviceId]
 
 ## Configuration
 

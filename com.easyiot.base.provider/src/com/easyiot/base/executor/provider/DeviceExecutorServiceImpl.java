@@ -3,12 +3,9 @@ package com.easyiot.base.executor.provider;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
-import org.osgi.service.component.annotations.ReferenceCardinality;
-import org.osgi.service.component.annotations.ReferencePolicy;
 
 import com.easyiot.base.api.Device;
 import com.easyiot.base.api.Device.DeviceExecutorMethodTypeEnum;
@@ -20,17 +17,13 @@ public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 	/**
 	 * NOTE:
 	 * 
-	 * cardinality = ReferenceCardinality.MULTIPLE :Because we want multiple
-	 * reference but if there is none then service should not stop, e.g. not
-	 * mandatory
-	 * 
 	 * policy = ReferencePolicy.DYNAMIC : Because we want to be notified for
-	 * each service entered to the system
+	 * each service entered to the system, we use "volatile" to indicate dynamic
 	 * 
 	 * @param properties
 	 */
 	@Reference
-	List<Device> devices;
+	volatile List<Device> devices;
 
 	@SuppressWarnings("unchecked")
 	@Override
