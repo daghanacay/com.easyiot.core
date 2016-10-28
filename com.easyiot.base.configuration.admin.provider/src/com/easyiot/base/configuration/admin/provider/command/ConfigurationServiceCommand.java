@@ -41,6 +41,8 @@ public class ConfigurationServiceCommand {
 	}
 
 	/**
+	 * Get the existing instances that have been created through configuration
+	 * 
 	 * usage: g! getDeviceOrProtocolInstances test.factory.pid
 	 * 
 	 * @param factoryPid
@@ -52,6 +54,8 @@ public class ConfigurationServiceCommand {
 	}
 
 	/**
+	 * get the properties of device on portocol that are created through configuration.
+	 * 
 	 * usage: g! getDeviceOrProtocolInstanceProperties
 	 * test.factory.pid.a9d13487-83da-45d1-a282-aa76515edfa8
 	 * 
@@ -109,9 +113,9 @@ public class ConfigurationServiceCommand {
 	}
 
 	/**
-	 * Usage
+	 * Deletes an existing protocol or device.
 	 * 
-	 * deleteDeviceOrProtocolInstance {pid}
+	 * Usage: deleteDeviceOrProtocolInstance {pid}
 	 * 
 	 * @param pid
 	 * @throws IOException
@@ -121,7 +125,7 @@ public class ConfigurationServiceCommand {
 	}
 
 	/**
-	 * Creates a instance from easyIotConfiguration
+	 * Creates an instance of a device or protocol.
 	 * 
 	 * Usage createDeviceOrProtocolInstance {factoryPid} [prop1=1 prop2=test]
 	 * 
