@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.component.annotations.ReferencePolicyOption;
 
 import com.easyiot.base.api.Device;
 import com.easyiot.base.api.Device.DeviceExecutorMethodTypeEnum;
@@ -22,18 +23,18 @@ public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 	 * 
 	 * @param properties
 	 */
-	@Reference
-	volatile List<Device> devices;
+	@Reference(policyOption = ReferencePolicyOption.GREEDY)
+	volatile List<Device> _devices;
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public <O, I> O activateResource(String deviceId, I input, Class<O> outputType,
 			DeviceExecutorMethodTypeEnum methodType) throws NoSuchMethodException, NoSuchDeviceException {
 
-		if (devices.size() == 0) {
+		if (_devices.size() == 0) {
 			throw new NoSuchDeviceException(deviceId);
 		}
-		for (Device deviceService : devices) {
+		for (Device deviceService : _devices) {
 			// Check if this is the service we are interested
 			if (deviceId.equalsIgnoreCase(deviceService.getId())) {
 				for (Method method : deviceService.getClass().getDeclaredMethods()) {
