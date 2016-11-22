@@ -2,3 +2,6 @@
 /generated/
 enroute.zip
 .metadata
+**/target/
+.settings/
+.project

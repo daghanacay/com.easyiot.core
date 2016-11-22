@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.easyiot</groupId>
+		<artifactId>easyiot.core</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<artifactId>com.easyiot.base.security.provider</artifactId>
+	<description>Provides autharization and authentication based security for the http/https access to the framework components.</description>
+
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+	</build>
+	
+	<dependencies>
+		<dependency>
+			<groupId>com.easyiot</groupId>
+			<artifactId>com.easyiot.base.api</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+
+</project>

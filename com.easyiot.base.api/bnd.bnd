@@ -25,3 +25,4 @@ Require-Capability: \
 	osgi.enroute.junit.wrapper;version=4.12
 	
 -includeresource: {readme.md}
+-runbundles: org.apache.felix.log;version='[1.0.1,1.0.2)'

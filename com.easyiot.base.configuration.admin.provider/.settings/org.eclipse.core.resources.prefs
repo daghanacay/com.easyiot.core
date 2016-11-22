@@ -5,6 +5,5 @@ encoding/.project=UTF-8
 encoding//.settings/org.eclipse.jdt.core.prefs=UTF-8
 encoding//src/com/easyiot/base/configuration/admin/provider/AdminImpl.java=UTF-8
 encoding//test/.gitignore=UTF-8
-encoding//test/com/easyiot/base/configuration/admin/provider/AdminImplTest.java=UTF-8
 encoding/bnd.bnd=UTF-8
 encoding/readme.md=UTF-8

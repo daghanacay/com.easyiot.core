@@ -5,6 +5,5 @@ encoding/.project=UTF-8
 encoding//.settings/org.eclipse.jdt.core.prefs=UTF-8
 encoding//src/com/easyiot/base/executor/provider/DeviceExecutorServiceImpl.java=UTF-8
 encoding//test/.gitignore=UTF-8
-encoding//test/com/easyiot/base/provider/BaseImplTest.java=UTF-8
 encoding/bnd.bnd=UTF-8
 encoding/readme.md=UTF-8
