@@ -100,7 +100,7 @@ public class AdminImpl implements REST {
 	 */
 
 	public void putDeviceOrProtocolInstanceProperties(PropertyRequest request, String pid) throws IOException {
-		Hashtable<String, String> temp = new Hashtable();
+		Hashtable<String, String> temp = new Hashtable<String, String>();
 		temp.putAll(request._body());
 
 		cm.getConfiguration(pid, "?").update(temp);

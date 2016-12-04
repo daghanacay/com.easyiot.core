@@ -50,7 +50,7 @@ public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 						case GET:
 							// we found the method lets run it
 							try {
-								return (O) method.invoke(deviceService, null);
+								return (O) method.invoke(deviceService);
 							} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 								throw new NoSuchMethodException(method.getName());
 							}
