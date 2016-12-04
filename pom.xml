@@ -75,6 +75,12 @@
 				</executions>
 			</plugin>
 		</plugins>
+		<resources>
+			<resource>
+				<directory>${basedir}/src</directory>
+				<targetPath>src</targetPath>
+			</resource>
+		</resources>
 	</build>
 	<dependencies>
 
