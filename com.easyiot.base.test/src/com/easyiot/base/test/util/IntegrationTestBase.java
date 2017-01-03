@@ -20,16 +20,17 @@ import org.osgi.util.tracker.ServiceTracker;
  *
  */
 public class IntegrationTestBase {
-	protected final BundleContext context = FrameworkUtil.getBundle(this.getClass()).getBundleContext();
+	protected final static BundleContext context = FrameworkUtil.getBundle(IntegrationTestBase.class)
+			.getBundleContext();
 
-	protected <T> T getService(Class<T> clazz) throws InterruptedException {
+	protected static <T> T getService(Class<T> clazz) throws InterruptedException {
 		ServiceTracker<T, T> st = new ServiceTracker<>(context, clazz, null);
 		st.open();
 		return st.waitForService(1000);
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	protected void pushFactoryConfig(Map<String, String> propertiesMap, String factoryPid) throws IOException {
+	protected static void pushFactoryConfig(Map<String, String> propertiesMap, String factoryPid) throws IOException {
 		ServiceReference configurationAdminReference = context.getServiceReference(ConfigurationAdmin.class.getName());
 		if (configurationAdminReference != null) {
 
@@ -48,7 +49,7 @@ public class IntegrationTestBase {
 	}
 
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	protected void pushConfig(Map<String, String> propertiesMap, String pid) throws IOException {
+	protected static void pushConfig(Map<String, String> propertiesMap, String pid) throws IOException {
 		ServiceReference configurationAdminReference = context.getServiceReference(ConfigurationAdmin.class.getName());
 		if (configurationAdminReference != null) {
 
