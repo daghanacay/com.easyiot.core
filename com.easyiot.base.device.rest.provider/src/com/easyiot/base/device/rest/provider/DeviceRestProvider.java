@@ -18,6 +18,8 @@ import com.easyiot.base.capability.DeviceRest.ProvideDeviceRest_v1_0_0;
 import com.easyiot.base.capability.WebSecurity.RequireWebSecurity;
 import com.easyiot.base.executor.DeviceExecutorService;
 
+import osgi.enroute.webserver.capabilities.RequireWebServerExtender;
+
 /**
  * Maps all the device methods to rest api
  * 
