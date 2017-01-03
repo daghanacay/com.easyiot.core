@@ -31,10 +31,6 @@ public class DeviceContextHelper extends ServletContextHelper {
 
 	@Override
 	public boolean handleSecurity(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// TODO REMOVE
-		if (request.getScheme().equals("http")) {
-			return true;
-		}
 		// Check if we use https
 		if (!request.getScheme().equals("https")) {
 			response.sendError(HttpServletResponse.SC_FORBIDDEN);

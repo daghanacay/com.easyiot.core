@@ -42,7 +42,7 @@ public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 					providerAnnotation = method.getAnnotation(methodType.getAnnotation());
 					// We only allow zero or one parameter methods
 					if (providerAnnotation != null && method.getParameters().length <= 1
-							&& outputType.isAssignableFrom(method.getReturnType())) {
+							&& (method.getReturnType().getName().equals("void") || outputType.isAssignableFrom(method.getReturnType()))) {
 						// Allow calling even private, protected, or no
 						// modifier
 						method.setAccessible(true);
