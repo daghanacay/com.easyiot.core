@@ -1,5 +1,6 @@
 package com.easyiot.base.device.rest.test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
@@ -54,7 +55,26 @@ public class RestTest extends IntegrationTestBase {
 			}
 		};
 
+		Device myTypedService = new Device() {
+
+			@Override
+			public String getId() {
+				return "testDevice2";
+			}
+
+			@GetMethod
+			public String getData() {
+				return "testGetResultFromDevice";
+			}
+
+			@PostMethod
+			public String postData(TestDeviceData data) {
+				return data.toString();
+			}
+		};
+
 		context.registerService(Device.class, myService, null);
+		context.registerService(Device.class, myTypedService, null);
 	}
 
 	// we need to modify DeviceContextHelper class in
@@ -82,5 +102,19 @@ public class RestTest extends IntegrationTestBase {
 				.bodyString("{\"test\":\"testVal\"}", ContentType.APPLICATION_JSON).execute().returnContent()
 				.asString();
 		assertFalse(result.isEmpty());
+	}
+
+	// we need to modify DeviceContextHelper class in
+	// com.easyiot.base.security.provider project for these test to pass
+	@Test
+	@Ignore
+	public void testRestTypedPost() throws Exception {
+
+		Servlet restService = getService(Servlet.class);
+		assertNotNull(restService);
+		String result = Request.Post("http://localhost:8080/easyiot/devices/testDevice2")
+				.bodyString("{\"name\":\"testVal\",\"id\":\"1\"}", ContentType.APPLICATION_JSON).execute()
+				.returnContent().asString();
+		assertEquals("{\"name\":\"testVal\", \"id\":1}\n", result.toString());
 	}
 }

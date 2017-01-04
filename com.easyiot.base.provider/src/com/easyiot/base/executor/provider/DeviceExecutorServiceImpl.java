@@ -13,6 +13,8 @@ import com.easyiot.base.api.Device.DeviceExecutorMethodTypeEnum;
 import com.easyiot.base.api.exception.NoSuchDeviceException;
 import com.easyiot.base.executor.DeviceExecutorService;
 
+import osgi.enroute.dto.api.DTOs;
+
 @Component(name = "com.easyiot.base.executor")
 public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 	/**
@@ -24,7 +26,10 @@ public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 	 * @param properties
 	 */
 	@Reference(policyOption = ReferencePolicyOption.GREEDY)
-	volatile List<Device> _devices;
+	private volatile List<Device> _devices;
+
+	@Reference
+	private DTOs dtoservice;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -42,7 +47,8 @@ public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 					providerAnnotation = method.getAnnotation(methodType.getAnnotation());
 					// We only allow zero or one parameter methods
 					if (providerAnnotation != null && method.getParameters().length <= 1
-							&& (method.getReturnType().getName().equals("void") || outputType.isAssignableFrom(method.getReturnType()))) {
+							&& (method.getReturnType().equals(Void.TYPE)
+									|| outputType.isAssignableFrom(method.getReturnType()))) {
 						// Allow calling even private, protected, or no
 						// modifier
 						method.setAccessible(true);
@@ -56,9 +62,25 @@ public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 							}
 						case POST:
 							try {
-								return (O) method.invoke(deviceService, input);
+								Class<?> methodParamType = method.getParameters()[0].getType();
+								// If the method input type is not assignable to
+								// methodParamType and input itself is already a
+								// String then do the conversion to input object
+								if (!input.getClass().isAssignableFrom(methodParamType) && input instanceof String) {
+									input = (I) dtoservice.decoder(methodParamType).get((String) input);
+								}
+								if (method.getReturnType().getName().equals("void")) {
+									// if the 
+									return (O) "";
+								} else {
+									return (O) method.invoke(deviceService, input);
+								}
+
 							} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
 								throw new NoSuchMethodException(method.getName());
+							} catch (Exception e) {
+								throw new NoSuchMethodException(method.getName()
+										+ "does not accept the string to input type converion. Please check your input message.");
 							}
 						default:
 							throw new NoSuchMethodException(
