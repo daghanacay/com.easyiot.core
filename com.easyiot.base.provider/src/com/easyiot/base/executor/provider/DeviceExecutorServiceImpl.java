@@ -35,7 +35,7 @@ public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 	@Override
 	public <O, I> O activateResource(String deviceId, I input, Class<O> outputType,
 			DeviceExecutorMethodTypeEnum methodType) throws NoSuchMethodException, NoSuchDeviceException {
-
+		boolean deviceFound = false;
 		if (_devices.size() == 0) {
 			throw new NoSuchDeviceException(deviceId + " does not exists. Please check our application configuration.");
 		}
@@ -43,6 +43,7 @@ public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 		for (Device deviceService : _devices) {
 			// Check if this is the service we are interested
 			if (deviceId.equalsIgnoreCase(deviceService.getId())) {
+				deviceFound = true;
 				for (Method method : deviceService.getClass().getDeclaredMethods()) {
 					Object providerAnnotation;
 					providerAnnotation = method.getAnnotation(methodType.getAnnotation());
@@ -58,9 +59,13 @@ public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 							// we found the method lets run it
 							try {
 								return (O) method.invoke(deviceService);
-							} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+							} catch (IllegalAccessException | IllegalArgumentException e) {
 								throw new NoSuchMethodException(method.getName()
-										+ "Does not follow the framework rules. Please change the @GetMethod method signature accordingly.");
+										+ " does not follow the framework rules. Please change the @GetMethod method signature.");
+							} catch (InvocationTargetException e) {
+								throw new NoSuchMethodException(
+										"Method execution throws an exception with the following reason. "
+												+ e.getCause().getMessage());
 							}
 						case POST:
 							try {
@@ -70,20 +75,29 @@ public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 								// String then do the conversion to input object
 								if (!input.getClass().isAssignableFrom(methodParamType) && input instanceof String) {
 									input = (I) dtoservice.decoder(methodParamType).get((String) input);
+									if (dtoservice.deepEquals(input, methodParamType.newInstance())) {
+										throw new Exception("message cannot be parsed");
+									}
 								}
 								if (method.getReturnType().getName().equals("void")) {
-									// if the
+									// if the device has void method then invoke
+									// and return empty string.
+									method.invoke(deviceService, input);
 									return (O) "";
 								} else {
 									return (O) method.invoke(deviceService, input);
 								}
 
-							} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
+							} catch (IllegalAccessException | IllegalArgumentException e) {
 								throw new NoSuchMethodException(method.getName()
-										+ "Does not follow the framework rules. Please change the @PostMethod method signature accordingly.");
+										+ " does not follow the framework rules. Please change the @PostMethod method signature.");
+							} catch (InvocationTargetException e) {
+								throw new NoSuchMethodException(
+										"Method execution throws an exception with the following reason. "
+												+ e.getCause().getMessage());
 							} catch (Exception e) {
 								throw new NoSuchMethodException(method.getName()
-										+ "does not accept the string to input type conversion. Please check your input message.");
+										+ " does not accept the string to input type conversion. Please check your input message.");
 							}
 						default:
 							throw new NoSuchMethodException(
@@ -94,8 +108,13 @@ public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 				}
 			}
 		}
+		if (deviceFound)
 
-		throw new NoSuchDeviceException(deviceId);
+		{
+			throw new NoSuchMethodException(methodType.toString() + " is not supported by " + deviceId);
+		} else {
+			throw new NoSuchDeviceException("Device: " + deviceId + " does not exists");
+		}
 	}
 
 }

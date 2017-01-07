@@ -50,7 +50,8 @@ public class DeviceRestProvider extends HttpServlet {
 			returnVal = rm.activateResource(pathInfo[1], null, Object.class, DeviceExecutorMethodTypeEnum.GET);
 		} catch (NoSuchMethodException me) {
 			resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-			resp.getWriter().println(String.format("Could not execute GET method on the device %s." + pathInfo[1]));
+			resp.getWriter().println(String.format("Could not execute GET method on the device %s. Because %s.",
+					pathInfo[1], me.getMessage()));
 			return;
 		} catch (NoSuchDeviceException de) {
 			resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -78,7 +79,8 @@ public class DeviceRestProvider extends HttpServlet {
 			returnVal = rm.activateResource(pathInfo[1], postBody, Object.class, DeviceExecutorMethodTypeEnum.POST);
 		} catch (NoSuchMethodException me) {
 			resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-			resp.getWriter().println(String.format("Could not execute POST method on the device %s." + pathInfo[1]));
+			resp.getWriter().println(String.format("Could not execute POST method on the device %s. Because %s.",
+					pathInfo[1], me.getMessage()));
 			return;
 		} catch (NoSuchDeviceException de) {
 			resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
