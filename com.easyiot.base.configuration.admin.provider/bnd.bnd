@@ -14,8 +14,7 @@ Private-Package: \
 	osgi.enroute.junit.wrapper;version=4.12
 
 -includeresource: \
-    {readme.md}, \
-    {configuration=configuration}, \
+    {readme.md}
 
 
 -runrequires:  \

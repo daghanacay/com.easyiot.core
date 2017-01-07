@@ -37,8 +37,9 @@ public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 			DeviceExecutorMethodTypeEnum methodType) throws NoSuchMethodException, NoSuchDeviceException {
 
 		if (_devices.size() == 0) {
-			throw new NoSuchDeviceException(deviceId);
+			throw new NoSuchDeviceException(deviceId + " does not exists. Please check our application configuration.");
 		}
+
 		for (Device deviceService : _devices) {
 			// Check if this is the service we are interested
 			if (deviceId.equalsIgnoreCase(deviceService.getId())) {
@@ -58,7 +59,8 @@ public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 							try {
 								return (O) method.invoke(deviceService);
 							} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-								throw new NoSuchMethodException(method.getName());
+								throw new NoSuchMethodException(method.getName()
+										+ "Does not follow the framework rules. Please change the @GetMethod method signature accordingly.");
 							}
 						case POST:
 							try {
@@ -70,21 +72,22 @@ public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 									input = (I) dtoservice.decoder(methodParamType).get((String) input);
 								}
 								if (method.getReturnType().getName().equals("void")) {
-									// if the 
+									// if the
 									return (O) "";
 								} else {
 									return (O) method.invoke(deviceService, input);
 								}
 
 							} catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-								throw new NoSuchMethodException(method.getName());
+								throw new NoSuchMethodException(method.getName()
+										+ "Does not follow the framework rules. Please change the @PostMethod method signature accordingly.");
 							} catch (Exception e) {
 								throw new NoSuchMethodException(method.getName()
-										+ "does not accept the string to input type converion. Please check your input message.");
+										+ "does not accept the string to input type conversion. Please check your input message.");
 							}
 						default:
 							throw new NoSuchMethodException(
-									methodType.toString() + " is not supported in this version.");
+									methodType.toString() + " is not supported by DeviceExecuterService.");
 
 						}
 					}
@@ -92,7 +95,7 @@ public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 			}
 		}
 
-		throw new NoSuchMethodException("No device method is annotated with " + methodType);
+		throw new NoSuchDeviceException(deviceId);
 	}
 
 }
