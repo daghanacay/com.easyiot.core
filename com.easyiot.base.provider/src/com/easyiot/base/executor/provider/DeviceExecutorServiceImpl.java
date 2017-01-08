@@ -37,7 +37,7 @@ public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 			DeviceExecutorMethodTypeEnum methodType) throws NoSuchMethodException, NoSuchDeviceException {
 		boolean deviceFound = false;
 		if (_devices.size() == 0) {
-			throw new NoSuchDeviceException(deviceId + " does not exists. Please check our application configuration.");
+			throw new NoSuchDeviceException(deviceId + " does not exists. Please check your application configuration.");
 		}
 
 		for (Device deviceService : _devices) {
