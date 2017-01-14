@@ -16,6 +16,7 @@
 
 	<modules>
 		<module>com.easyiot.base.api</module>
+		<module>com.easyiot.base.test</module>
 		<module>com.easyiot.base.configuration.admin.provider</module>
 		<module>com.easyiot.base.device.rest.provider</module>
 		<module>com.easyiot.base.provider</module>
