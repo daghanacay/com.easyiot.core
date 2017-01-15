@@ -31,7 +31,6 @@
 	osgi.console=, \
 	osgi.console.enable.builtin=false
 
--runpath.eqnx: 					osgi.enroute.equinox.log.adapter
 -runrequires.eqnx: \
 	osgi.identity;filter:='(osgi.identity=org.apache.felix.log)'
 	

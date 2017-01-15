@@ -35,7 +35,10 @@
 	osgi.enroute.dtos.bndlib.provider;version='[2.0.0,2.0.1)',\
 	osgi.enroute.executor.simple.provider;version='[2.0.0,2.0.1)',\
 	osgi.enroute.gogo.shell.provider;version='[2.0.0,2.0.1)',\
-	osgi.enroute.logger.simple.provider;version='[2.0.0,2.0.1)',\
 	osgi.enroute.rest.simple.provider;version='[2.0.0,2.0.1)',\
-	osgi.enroute.web.simple.provider;version='[2.0.0,2.0.1)'
+	osgi.enroute.web.simple.provider;version='[2.0.0,2.0.1)',\
+	log4j;version='[1.2.17,1.2.18)',\
+	org.apache.commons.logging;version='[1.2.0,1.2.1)',\
+	slf4j.api;version='[1.7.7,1.7.8)',\
+	slf4j.log4j12;version='[1.6.1,1.6.2)'
 -runrequires: osgi.identity;filter:='(osgi.identity=com.easyiot.base.configuration.admin.provider)'

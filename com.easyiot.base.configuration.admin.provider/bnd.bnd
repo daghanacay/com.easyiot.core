@@ -1,6 +1,6 @@
 Bundle-Version:					1.0.0.${tstamp}
 Bundle-Description: 				\
-	Defines the service that provides rest end point for adding, removing, and updating the configurations. 
+	Defines the service that provides rest end point and commands for adding, removing, and updating the configurations. 
 
 Private-Package: \
 	com.easyiot.base.configuration.admin.provider.command,\
