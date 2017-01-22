@@ -1,0 +1,65 @@
+<div ng-controller="ConfigController as cfgCtrl">
+
+	<div class="row">
+		<div ng-repeat="config in cfgCtrl.configs">
+			<!-- Left column -->
+			<div class="col-sm-11">
+
+				<ul class="nav nav-pills nav-justified">
+					<li ng-class="{active: cfgCtrl.selectedConfig == config}"><a
+						ng-click="cfgCtrl.selectConfig(config)">{{config}}</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-1">
+				<button type="button" class="btn btn-default pull-right"
+					ng-click="cfgCtrl.newChildForm(config)">
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-4">
+			<table class="table table-hover fixed">
+				<thead>
+					<tr>
+						<th>Device Instances</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="childConfig in cfgCtrl.childConfigs">
+						<td ng-click="cfgCtrl.updateChildForm(childConfig)">{{childConfig}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-sm-8">
+			<!-- Device config form -->
+			<div ng-show="cfgCtrl.showTheForm">
+				<b>Title:</b> {{cfgCtrl.childForm.title}}
+				<p />
+				<b>Description:</b> {{cfgCtrl.childForm.description}}
+				<div ng-repeat="property in cfgCtrl.childForm.properties">
+					<!-- String Property -->
+					<div ng-show="property.type == 1">
+						<input type="text" name="{{property.name}}"
+							ng-model="property.value" ng-required="{{!property.optional}}">
+					</div>
+					<!-- Input value -->
+					<div ng-show="property.type != 1">
+						{{property.name}} <select name="singleSelect" id="singleSelect"
+							ng-model="property.value"
+							ng-options="o as o for o in property.type.labels"
+							ng-required="{{!property.optional}}">
+						</select>
+					</div>
+				</div>
+				<ul class="nav nav-pills pull-right">
+					<li ng-show="cfgCtrl.childSelected"><a ng-click="cfgCtrl.updateConfig()">Update</a></li>
+					<li ng-show="cfgCtrl.childSelected"><a ng-click="cfgCtrl.removeConfig()">Remove</a></li>
+					<li ng-show="!cfgCtrl.childSelected"><a ng-click="cfgCtrl.addConfig()">Add</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</div>

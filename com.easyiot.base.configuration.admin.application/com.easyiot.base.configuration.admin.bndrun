@@ -1,0 +1,17 @@
+#
+#  RUN SPECIFICATION
+#
+
+
+Bundle-Version:				1.0.0.${tstamp}
+Bundle-SymbolicName:		com.easyiot.base.configuration.admin.application.launch
+JPM-Command:					admin
+
+
+-runfw:						org.eclipse.osgi
+
+-runrequires:  \
+	osgi.identity;filter:='(osgi.identity=com.easyiot.base.configuration.admin.application)'
+
+-runbundles: \
+	${error;Resolve first}

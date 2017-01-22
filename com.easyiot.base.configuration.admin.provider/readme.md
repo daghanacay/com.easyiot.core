@@ -33,7 +33,7 @@ getDeviceOrProtocolInstances: Get the existing instances that have been created 
 Usage: GET http://localhost:8080/rest/DeviceOrProtocolInstances/{factory.pid}
 
 getDeviceOrProtocolInstanceProperties: get the properties of device on protocol that are created through configuration.
-Usage: http://localhost:8080/rest/getDeviceOrProtocolInstanceProperties/{factory.pid.id}
+Usage: http://localhost:8080/rest/DeviceOrProtocolInstanceProperties/{pid}
 
 createDeviceOrProtocolInstance: Creates an instance of a device or protocol
 Usage POST http://localhost:8080/rest/DeviceOrProtocolInstance/{factory.pid} 
@@ -44,5 +44,5 @@ Usage PUT http://localhost:8080/rest/DeviceOrProtocolInstanceProperties/{pid}
 Body {"prop1":"Sam3","prop1":"SAM3"}
 
 deleteDeviceOrProtocolInstance: Deletes an existing protocol or device.
-Usage: DELETE http://localhost:8080/rest/deleteDeviceOrProtocolInstance/{factory.pid.id}
+Usage: DELETE http://localhost:8080/rest/DeviceOrProtocolInstance/{pid}
 

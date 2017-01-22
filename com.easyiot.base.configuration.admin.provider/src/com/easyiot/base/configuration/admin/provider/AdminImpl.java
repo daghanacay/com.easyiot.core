@@ -109,7 +109,7 @@ public class AdminImpl implements REST {
 	/**
 	 * Remove a configuration.
 	 * 
-	 * Delete http://localhost:8080/DeviceOrProtocolInstance/{pid}
+	 * Delete http://localhost:8080/rest/DeviceOrProtocolInstance/{pid}
 	 * 
 	 * @param pid
 	 *            the (instance) PID of a configuration
