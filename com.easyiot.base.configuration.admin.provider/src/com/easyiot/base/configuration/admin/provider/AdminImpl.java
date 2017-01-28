@@ -1,6 +1,7 @@
 package com.easyiot.base.configuration.admin.provider;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Dictionary;
 import java.util.Enumeration;
@@ -8,6 +9,8 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import org.osgi.framework.InvalidSyntaxException;
@@ -15,8 +18,12 @@ import org.osgi.service.cm.Configuration;
 import org.osgi.service.cm.ConfigurationAdmin;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.metatype.AttributeDefinition;
+import org.osgi.service.metatype.ObjectClassDefinition;
 
 import com.easyiot.base.capability.ConfigurationManagement.ProvideConfigurationManagement_v1_0_0;
+import com.easyiot.base.configuration.admin.provider.dto.ConfigMetadata;
+import com.easyiot.base.configuration.admin.provider.dto.PropertyMeta;
 
 import osgi.enroute.configurer.api.RequireConfigurerExtender;
 import osgi.enroute.rest.api.REST;
@@ -51,6 +58,44 @@ public class AdminImpl implements REST {
 	}
 
 	/**
+	 * Returns all the factory configurations from EasyIotBundles.
+	 * 
+	 * http://localhost:8080/rest/getRegisteredDevicesOrProtocolsMetaData/{
+	 * factoryPid}
+	 * 
+	 * @return
+	 */
+	public ConfigMetadata getRegisteredDevicesOrProtocolsMetaData(RESTRequest rr, String factoryPid) {
+		ObjectClassDefinition metadata = myBundleTracker.getIotFactoryObjectClassDefitions(factoryPid);
+		ConfigMetadata returnVal = convertMetadata(metadata);
+		return returnVal;
+	}
+
+	private ConfigMetadata convertMetadata(ObjectClassDefinition metadata) {
+		ConfigMetadata returnVal = new ConfigMetadata();
+		returnVal.description = metadata.getDescription();
+		returnVal.name = metadata.getName();
+		returnVal.pid = metadata.getID();
+		returnVal.properties = convertProperties(metadata);
+		return returnVal;
+	}
+
+	private List<PropertyMeta> convertProperties(ObjectClassDefinition metadata) {
+		List<PropertyMeta> returnVal = new ArrayList<>();
+		for (AttributeDefinition tempDef : metadata.getAttributeDefinitions(ObjectClassDefinition.ALL)) {
+			PropertyMeta tempDefNew = new PropertyMeta();
+			tempDefNew.description = tempDef.getDescription();
+			tempDefNew.id = tempDef.getID();
+			tempDefNew.name = tempDef.getName();
+			tempDefNew.optional = !(tempDef.getCardinality() == 0);
+			tempDefNew.type = tempDef.getType();
+			tempDefNew.value = tempDef.getDefaultValue()[0];
+			returnVal.add(tempDefNew);
+		}
+		return returnVal;
+	}
+
+	/**
 	 * Given a factory configuration it returns all the existing child
 	 * configurations.
 	 * 
@@ -69,6 +114,37 @@ public class AdminImpl implements REST {
 
 	/**
 	 * Returns all the properties of a saved configuration.
+	 * 
+	 * http://localhost:8080/rest/getDeviceOrProtocolInstancePropertiesMeta/{pid}
+	 * 
+	 * @param pid
+	 * @return
+	 * @throws IOException
+	 * @throws InvalidSyntaxException
+	 */
+	public ConfigMetadata getDeviceOrProtocolInstancePropertiesMeta(RESTRequest rr, String pid)
+			throws IOException, InvalidSyntaxException {
+		List<Configuration> confs = getConfigurations0(String.format("(service.pid=%s)", pid));
+		Configuration conf = confs.size() == 1 ? confs.get(0) : null;
+		if (conf == null) {
+			return null;
+		}
+		// Get the metadata from the framework
+		ObjectClassDefinition metadata = myBundleTracker.getIotFactoryObjectClassDefitions(conf.getFactoryPid());
+		ConfigMetadata returnVal = convertMetadata(metadata);
+		// update metadata with the pid configurations
+		for (Enumeration<String> e = conf.getProperties().keys(); e.hasMoreElements();) {
+			String key = e.nextElement();
+			// Search the prperty metadata that matches the key in the property 
+			returnVal.properties.stream().filter(propMeta -> propMeta.id.equals(key)).findFirst()
+			// update the value of the PropertyMetadata with the value of the key
+					.ifPresent(foundMeta -> foundMeta.value = (String) conf.getProperties().get(key));
+		}
+		return returnVal;
+	}
+
+	/**
+	 * Returns all the properties of a saved configuration with metadata.
 	 * 
 	 * http://localhost:8080/rest/DeviceOrProtocolInstanceProperties/{pid}
 	 * 

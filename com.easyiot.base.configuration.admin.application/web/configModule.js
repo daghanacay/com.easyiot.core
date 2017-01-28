@@ -20,6 +20,23 @@ configModule.controller('ConfigController', [
 		this.showTheForm = false;
 	    };
 
+	    // Get the configurations
+	    function getAllConfigs() {
+		$http({
+		    method : 'GET',
+		    url : '/rest/RegisteredDevicesOrProtocols'
+		}).then(function successCallback(response) {
+		    vm.configs = response.data;
+		    vm.selectConfig(vm.configs[0]);
+		}, function errorCallback(response) {
+		    this.alerts.push({
+			type : 'failure',
+			msg : response
+		    });
+		});
+	    }
+	    ;
+
 	    // gets all the child configs for a factory config
 	    this.getChildConfigs = function(config) {
 		$http({
@@ -38,6 +55,25 @@ configModule.controller('ConfigController', [
 		this.childSelected = false;
 	    };
 
+	    // Create a child form for a new configuration
+	    this.newChildForm = function(config) {
+		$http(
+			{
+			    method : 'GET',
+			    url : '/rest/RegisteredDevicesOrProtocolsMetaData/' + config
+			}).then(function successCallback(response) {
+		    vm.childForm = response.data;
+		}, function errorCallback(response) {
+		    this.alerts.push({
+			type : 'failure',
+			msg : response
+		    });
+		});
+		this.showTheForm = true;
+		this.selectedConfig = config;
+		this.childSelected = false;
+	    };
+	    // TODO LEFT HERE
 	    // Create an update form for existing child
 	    this.updateChildForm = function(childConfigStr) {
 		$http({
@@ -59,26 +95,6 @@ configModule.controller('ConfigController', [
 		this.childSelected = true;
 	    };
 
-	    // Create a child form for a new configuration
-	    this.newChildForm = function(config) {
-		$http(
-			{
-			    method : 'GET',
-			    url : '/rest/DeviceOrProtocolInstanceProperties/'
-				    + config.pidString
-			}).then(function successCallback(response) {
-		    vm.childForm = response.data;
-		}, function errorCallback(response) {
-		    this.alerts.push({
-			type : 'failure',
-			msg : response
-		    });
-		});
-		this.showTheForm = true;
-		this.selectedConfig = config;
-		this.childSelected = false;
-	    };
-	    
 	    this.addConfig = function() {
 		$http({
 		    method : 'POST',
@@ -124,22 +140,5 @@ configModule.controller('ConfigController', [
 		    });
 		});
 	    };
-
-	    // Get the configurations
-	    function getAllConfigs() {
-		$http({
-		    method : 'GET',
-		    url : '/rest/RegisteredDevicesOrProtocols'
-		}).then(function successCallback(response) {
-		    vm.configs = response.data;
-		    vm.selectConfig(vm.configs[0]);
-		}, function errorCallback(response) {
-		    this.alerts.push({
-			type : 'failure',
-			msg : response
-		    });
-		});
-	    }
-	    ;
 
 	} ]);

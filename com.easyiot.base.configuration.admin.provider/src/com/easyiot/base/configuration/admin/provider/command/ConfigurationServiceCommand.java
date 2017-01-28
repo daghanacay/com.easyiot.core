@@ -9,16 +9,21 @@ import javax.servlet.http.HttpServletResponse;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.metatype.annotations.Designate;
 
+import com.easyiot.base.configuration.admin.config.AdminConfig;
 import com.easyiot.base.configuration.admin.provider.AdminImpl;
 import com.easyiot.base.configuration.admin.provider.AdminImpl.PropertyRequest;
 
 import osgi.enroute.debug.api.Debug;
 
-@Component(service = ConfigurationServiceCommand.class, immediate = true, property = { Debug.COMMAND_SCOPE + "=conf",
-		Debug.COMMAND_FUNCTION + "=getRegisteredDevicesOrProtocols",
+@Designate(ocd = AdminConfig.class, factory = true)
+@Component(name = "config.command.component", service = ConfigurationServiceCommand.class, immediate = true, property = {
+		Debug.COMMAND_SCOPE + "=conf", Debug.COMMAND_FUNCTION + "=getRegisteredDevicesOrProtocols",
+		Debug.COMMAND_FUNCTION + "=getRegisteredDevicesOrProtocolsMetaData",
 		Debug.COMMAND_FUNCTION + "=getDeviceOrProtocolInstances",
 		Debug.COMMAND_FUNCTION + "=getDeviceOrProtocolInstanceProperties",
+		Debug.COMMAND_FUNCTION + "=getDeviceOrProtocolInstancePropertiesMeta",
 		Debug.COMMAND_FUNCTION + "=updateDeviceOrProtocolInstanceProperties",
 		Debug.COMMAND_FUNCTION + "=deleteDeviceOrProtocolInstance",
 		Debug.COMMAND_FUNCTION + "=createDeviceOrProtocolInstance" })
@@ -41,6 +46,21 @@ public class ConfigurationServiceCommand {
 	}
 
 	/**
+	 * returns all the easyiot configurations metatype information.
+	 * 
+	 * usage: g! getRegisteredDevicesOrProtocolsProperties test.factory.pid
+	 * 
+	 * @throws InvalidSyntaxException
+	 * @throws IOException
+	 * 
+	 * @throws Exception
+	 */
+	public void getRegisteredDevicesOrProtocolsMetaData(String deviceOrProtocolPid)
+			throws IOException, InvalidSyntaxException {
+		System.out.println(adminService.getRegisteredDevicesOrProtocolsMetaData(null, deviceOrProtocolPid));
+	}
+
+	/**
 	 * Get the existing instances that have been created through configuration
 	 * 
 	 * usage: g! getDeviceOrProtocolInstances test.factory.pid
@@ -54,7 +74,8 @@ public class ConfigurationServiceCommand {
 	}
 
 	/**
-	 * get the properties of device on portocol that are created through configuration.
+	 * get the properties of device on portocol that are created through
+	 * configuration.
 	 * 
 	 * usage: g! getDeviceOrProtocolInstanceProperties
 	 * test.factory.pid.a9d13487-83da-45d1-a282-aa76515edfa8
@@ -66,6 +87,22 @@ public class ConfigurationServiceCommand {
 	public void getDeviceOrProtocolInstanceProperties(String deviceOrProtocolPid)
 			throws IOException, InvalidSyntaxException {
 		System.out.println(adminService.getDeviceOrProtocolInstanceProperties(null, deviceOrProtocolPid));
+	}
+
+	/**
+	 * get the properties of device on portocol that are created through
+	 * configuration.
+	 * 
+	 * usage: g! getDeviceOrProtocolInstanceProperties
+	 * test.factory.pid.a9d13487-83da-45d1-a282-aa76515edfa8
+	 * 
+	 * @param pid
+	 * @throws IOException
+	 * @throws InvalidSyntaxException
+	 */
+	public void getDeviceOrProtocolInstancePropertiesMeta(String deviceOrProtocolPid)
+			throws IOException, InvalidSyntaxException {
+		System.out.println(adminService.getDeviceOrProtocolInstancePropertiesMeta(null, deviceOrProtocolPid));
 	}
 
 	/**
