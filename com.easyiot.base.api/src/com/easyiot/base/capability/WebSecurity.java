@@ -12,14 +12,14 @@ import aQute.bnd.annotation.headers.RequireCapability;
 public interface WebSecurity {
 	public static final String HTTPS_SECURITY = "https_security";
 
-	@ProvideCapability(ns = EasyiotNamespace.NS, name = HTTPS_SECURITY, version="1.0.0")
+	@ProvideCapability(ns = EasyiotNamespace.NS, name = HTTPS_SECURITY)
 	@Retention(RetentionPolicy.CLASS)
-	public @interface ProvideWebSecurity_v1_0_0 {
-
+	public @interface ProvideWebSecurity {
+		String version() default "1.0.0";
 	}
 
 	@RequireCapability(ns = EasyiotNamespace.NS, filter = "(&(" + EasyiotNamespace.NS + "=" + HTTPS_SECURITY
-			+ ")${frange;${versionStr}})")
+			+ ")${frange;${version}})")
 	@Retention(RetentionPolicy.CLASS)
 	public @interface RequireWebSecurity {
 		/**
@@ -27,7 +27,7 @@ public interface WebSecurity {
 		 * 
 		 * @return
 		 */
-		String versionStr() default "1.0.0";
+		String version() default "1.0.0";
 	}
 
 }

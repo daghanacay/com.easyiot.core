@@ -9,8 +9,6 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import org.osgi.framework.InvalidSyntaxException;
@@ -21,7 +19,7 @@ import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.metatype.AttributeDefinition;
 import org.osgi.service.metatype.ObjectClassDefinition;
 
-import com.easyiot.base.capability.ConfigurationManagement.ProvideConfigurationManagement_v1_0_0;
+import com.easyiot.base.capability.ConfigurationManagement.ProvideConfigurationManagement;
 import com.easyiot.base.configuration.admin.provider.dto.ConfigMetadata;
 import com.easyiot.base.configuration.admin.provider.dto.PropertyMeta;
 
@@ -33,7 +31,7 @@ import osgi.enroute.webserver.capabilities.RequireWebServerExtender;
 /**
  * manages all the configurations in the OSGi container.
  */
-@ProvideConfigurationManagement_v1_0_0
+@ProvideConfigurationManagement(version = "1.0.0")
 @RequireConfigurerExtender
 @RequireWebServerExtender
 @Component(name = "com.easyiot.base.configuration.admin", immediate = true, service = { AdminImpl.class, REST.class })
@@ -67,15 +65,15 @@ public class AdminImpl implements REST {
 	 */
 	public ConfigMetadata getRegisteredDevicesOrProtocolsMetaData(RESTRequest rr, String factoryPid) {
 		ObjectClassDefinition metadata = myBundleTracker.getIotFactoryObjectClassDefitions(factoryPid);
-		ConfigMetadata returnVal = convertMetadata(metadata);
+		ConfigMetadata returnVal = convertMetadata(metadata, factoryPid);
 		return returnVal;
 	}
 
-	private ConfigMetadata convertMetadata(ObjectClassDefinition metadata) {
+	private ConfigMetadata convertMetadata(ObjectClassDefinition metadata, String factoryPid) {
 		ConfigMetadata returnVal = new ConfigMetadata();
 		returnVal.description = metadata.getDescription();
 		returnVal.name = metadata.getName();
-		returnVal.pid = metadata.getID();
+		returnVal.pid = factoryPid;
 		returnVal.properties = convertProperties(metadata);
 		return returnVal;
 	}
@@ -131,7 +129,7 @@ public class AdminImpl implements REST {
 		}
 		// Get the metadata from the framework
 		ObjectClassDefinition metadata = myBundleTracker.getIotFactoryObjectClassDefitions(conf.getFactoryPid());
-		ConfigMetadata returnVal = convertMetadata(metadata);
+		ConfigMetadata returnVal = convertMetadata(metadata, pid);
 		// update metadata with the pid configurations
 		for (Enumeration<String> e = conf.getProperties().keys(); e.hasMoreElements();) {
 			String key = e.nextElement();

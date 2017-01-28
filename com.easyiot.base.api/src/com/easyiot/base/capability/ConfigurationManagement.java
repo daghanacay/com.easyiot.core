@@ -9,14 +9,14 @@ import aQute.bnd.annotation.headers.RequireCapability;
 public interface ConfigurationManagement {
 	public static final String CONFIGURATION_MANAGEMENT = "configuration-management";
 
-	@ProvideCapability(ns = EasyiotNamespace.NS, name = CONFIGURATION_MANAGEMENT, version="1.0.0")
+	@ProvideCapability(ns = EasyiotNamespace.NS, name = CONFIGURATION_MANAGEMENT)
 	@Retention(RetentionPolicy.CLASS)
-	public @interface ProvideConfigurationManagement_v1_0_0 {
-
+	public @interface ProvideConfigurationManagement {
+		String version() default "1.0.0";
 	}
 
 	@RequireCapability(ns = EasyiotNamespace.NS, filter = "(&(" + EasyiotNamespace.NS + "=" + CONFIGURATION_MANAGEMENT
-			+ ")${frange;${versionStr}})")
+			+ ")${frange;${version}})")
 	@Retention(RetentionPolicy.CLASS)
 	public @interface RequireConfigurationManagement {
 		/**
@@ -24,6 +24,6 @@ public interface ConfigurationManagement {
 		 * 
 		 * @return
 		 */
-		String versionStr() default "1.0.0";
+		String version() default "1.0.0";
 	}
 }

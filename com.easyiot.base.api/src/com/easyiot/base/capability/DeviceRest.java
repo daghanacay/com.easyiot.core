@@ -9,14 +9,14 @@ import aQute.bnd.annotation.headers.RequireCapability;
 public interface DeviceRest {
 	public static final String DEVICE_REST = "device-rest";
 
-	@ProvideCapability(ns = EasyiotNamespace.NS, name = DEVICE_REST, version="1.0.0")
+	@ProvideCapability(ns = EasyiotNamespace.NS, name = DEVICE_REST)
 	@Retention(RetentionPolicy.CLASS)
-	public @interface ProvideDeviceRest_v1_0_0 {
-
+	public @interface ProvideDeviceRest {
+		String version() default "1.0.0";
 	}
 
 	@RequireCapability(ns = EasyiotNamespace.NS, filter = "(&(" + EasyiotNamespace.NS + "=" + DEVICE_REST
-			+ ")${frange;${versionStr}})")
+			+ ")${frange;${version}})")
 	@Retention(RetentionPolicy.CLASS)
 	public @interface RequireDeviceRest {
 		/**
@@ -24,6 +24,6 @@ public interface DeviceRest {
 		 * 
 		 * @return
 		 */
-		String versionStr() default "1.0.0";
+		String version() default "1.0.0";
 	}
 }

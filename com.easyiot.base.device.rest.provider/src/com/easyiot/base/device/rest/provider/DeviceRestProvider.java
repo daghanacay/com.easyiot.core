@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import javax.lang.model.type.NullType;
 import javax.servlet.Servlet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +17,7 @@ import org.osgi.service.http.whiteboard.HttpWhiteboardConstants;
 
 import com.easyiot.base.api.Device.DeviceExecutorMethodTypeEnum;
 import com.easyiot.base.api.exception.NoSuchDeviceException;
-import com.easyiot.base.capability.DeviceRest.ProvideDeviceRest_v1_0_0;
+import com.easyiot.base.capability.DeviceRest.ProvideDeviceRest;
 import com.easyiot.base.capability.WebSecurity.RequireWebSecurity;
 import com.easyiot.base.executor.DeviceExecutorService;
 
@@ -28,8 +27,8 @@ import com.easyiot.base.executor.DeviceExecutorService;
  * @author daghan
  *
  */
-@ProvideDeviceRest_v1_0_0
-@RequireWebSecurity(versionStr = "1.0.0")
+@ProvideDeviceRest(version = "1.0.0")
+@RequireWebSecurity(version = "1.0.0")
 @Component(service = Servlet.class, property = {
 		HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_SELECT + "=("
 				+ HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_NAME + "=devicesContext)",
