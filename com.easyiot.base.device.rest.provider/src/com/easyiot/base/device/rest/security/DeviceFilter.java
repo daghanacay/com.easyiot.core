@@ -1,4 +1,4 @@
-package com.easyiot.base.security.provider.context;
+package com.easyiot.base.device.rest.security;
 
 import java.io.IOException;
 

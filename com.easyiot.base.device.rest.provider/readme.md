@@ -16,3 +16,8 @@ You can access your device end point using the following
 		
 	
 ## References
+
+If @RequireAuthenticationAuthorization then following permissions apply 
+
+readDevice -> Allow reading from a device
+writeDevice -> Allow posting to a device

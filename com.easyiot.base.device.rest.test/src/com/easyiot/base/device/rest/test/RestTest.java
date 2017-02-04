@@ -5,11 +5,13 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.IOException;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.Servlet;
 
+import org.apache.http.HttpResponse;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.entity.ContentType;
 import org.junit.BeforeClass;
@@ -37,6 +39,17 @@ public class RestTest extends IntegrationTestBase {
 		config.put("org.apache.felix.https.truststore.type", "jks");
 
 		pushConfig(config, "org.apache.felix.http");
+
+		Map<String, String> securityConfig = new HashMap<>();
+		securityConfig.put("authenticationType", "CONFIGURATION");
+		securityConfig.put("users",
+				"[{\"name\":\"daghan\",\"password\":\"daghan\"},{\"name\":\"pinar\",\"password\":\"pinar\"}]");
+		securityConfig.put("groups",
+				"[{\"name\":\"admin\",\"user_names\":[\"daghan\"]},{\"name\":\"authenticated\",\"user_names\":[\"daghan\",\"pinar\"]}]");
+		securityConfig.put("permissions",
+				"[{\"name\":\"readDevice\",\"group_names\":[\"admin\",\"authenticated\"]},{\"name\":\"writeDevice\",\"group_names\":[\"admin\"]}]");
+		pushConfig(securityConfig, "com.easyiot.security");
+
 		Device myService = new Device() {
 
 			@Override
@@ -77,44 +90,48 @@ public class RestTest extends IntegrationTestBase {
 		context.registerService(Device.class, myTypedService, null);
 	}
 
-	// we need to modify DeviceContextHelper class in
-	// com.easyiot.base.security.provider project for these test to pass
 	@Test
-	@Ignore
 	public void testRestGet() throws Exception {
-
 		Servlet restService = getService(Servlet.class);
 		assertNotNull(restService);
-		String result = Request.Get("http://localhost:8080/easyiot/devices/testDevice").execute().returnContent()
-				.asString();
+		String encodedPass = new String(Base64.getEncoder().encode("daghan:daghan".getBytes()));
+		String result = Request.Get("http://localhost:8080/easyiot/devices/testDevice")
+				.addHeader("Authorization", "Basic " + encodedPass).execute().returnContent().asString();
 		assertFalse(result.isEmpty());
 	}
 
-	// we need to modify DeviceContextHelper class in
-	// com.easyiot.base.security.provider project for these test to pass
 	@Test
-	@Ignore
 	public void testRestPost() throws Exception {
-
 		Servlet restService = getService(Servlet.class);
 		assertNotNull(restService);
+		String encodedPass = new String(Base64.getEncoder().encode("daghan:daghan".getBytes()));
 		String result = Request.Post("http://localhost:8080/easyiot/devices/testDevice")
-				.bodyString("{\"test\":\"testVal\"}", ContentType.APPLICATION_JSON).execute().returnContent()
-				.asString();
+				.bodyString("{\"test\":\"testVal\"}", ContentType.APPLICATION_JSON)
+				.addHeader("Authorization", "Basic " + encodedPass).execute().returnContent().asString();
 		assertFalse(result.isEmpty());
 	}
 
-	// we need to modify DeviceContextHelper class in
-	// com.easyiot.base.security.provider project for these test to pass
 	@Test
-	@Ignore
+	public void testRestPostForbidden() throws Exception {
+
+		Servlet restService = getService(Servlet.class);
+		assertNotNull(restService);
+		String encodedPass = new String(Base64.getEncoder().encode("pinar:pinar".getBytes()));
+		HttpResponse result = Request.Post("http://localhost:8080/easyiot/devices/testDevice")
+				.bodyString("{\"test\":\"testVal\"}", ContentType.APPLICATION_JSON)
+				.addHeader("Authorization", "Basic " + encodedPass).execute().returnResponse();
+		assertEquals(403, result.getStatusLine().getStatusCode());
+	}
+
+	@Test
 	public void testRestTypedPost() throws Exception {
 
 		Servlet restService = getService(Servlet.class);
 		assertNotNull(restService);
+		String encodedPass = new String(Base64.getEncoder().encode("daghan:daghan".getBytes()));
 		String result = Request.Post("http://localhost:8080/easyiot/devices/testDevice2")
-				.bodyString("{\"name\":\"testVal\",\"id\":\"1\"}", ContentType.APPLICATION_JSON).execute()
-				.returnContent().asString();
+				.bodyString("{\"name\":\"testVal\",\"id\":\"1\"}", ContentType.APPLICATION_JSON)
+				.addHeader("Authorization", "Basic " + encodedPass).execute().returnContent().asString();
 		assertEquals("{\"name\":\"testVal\", \"id\":1}\n", result.toString());
 	}
 }

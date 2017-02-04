@@ -8,6 +8,26 @@ ${Bundle-Description}
 
 	Pid: com.easyiot.security
 	
+	{
+		"service.pid":"com.easyiot.security",
+		"authenticationType":"CONFIGURATION",
+		"users" : [
+			{"name":"daghan","password":"daghan"},
+			{"name":"pinar","password":"pinar"}
+		],
+		"groups": [
+			{"name":"admin","user_names":["daghan"]},
+			{"name":"authenticated","user_names":["daghan","pinar"]}
+		],
+		"permissions": [
+			{"name":"readDevice","group_names":["admin","authenticated"]},
+			{"name":"writeDevice","group_names":["admin"]}
+		]
+	}
+	
+	
+## Enable HTTPS in all application
+ 
 	Field					Type				Description
 	
 	[

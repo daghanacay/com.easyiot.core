@@ -10,7 +10,8 @@ Bundle-Description: 				\
 
 Private-Package: \
 	com.easyiot.base.security.provider.auth,\
-	com.easyiot.base.security.provider.context
+	com.easyiot.base.security.provider.auth.conf,\
+	com.easyiot.base.security.provider.dto
 	
 -buildpath: \
 	osgi.enroute.base.api;version=1.0,\
@@ -20,8 +21,7 @@ Private-Package: \
 	osgi.enroute.junit.wrapper;version=4.12
 
 -includeresource: \
-    {readme.md}, \
-    {configuration=configuration}, \
+    {readme.md}
 
 
 -runrequires:  \
@@ -33,7 +33,8 @@ Private-Package: \
 	org.eclipse.equinox.metatype;version='[1.4.100,1.4.101)',\
 	org.osgi.service.metatype;version='[1.3.0,1.3.1)',\
 	org.apache.felix.configadmin;version='[1.8.8,1.8.9)',\
-	org.apache.felix.scr;version='[2.0.2,2.0.3)'
+	org.apache.felix.scr;version='[2.0.2,2.0.3)',\
+	osgi.enroute.dtos.bndlib.provider;version='[2.0.0,2.0.1)'
 Import-Package: *
 -runee: JavaSE-1.8
 -runfw: org.eclipse.osgi

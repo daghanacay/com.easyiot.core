@@ -18,7 +18,6 @@ import org.osgi.service.http.whiteboard.HttpWhiteboardConstants;
 import com.easyiot.base.api.Device.DeviceExecutorMethodTypeEnum;
 import com.easyiot.base.api.exception.NoSuchDeviceException;
 import com.easyiot.base.capability.DeviceRest.ProvideDeviceRest;
-import com.easyiot.base.capability.WebSecurity.RequireWebSecurity;
 import com.easyiot.base.executor.DeviceExecutorService;
 
 /**
@@ -28,7 +27,6 @@ import com.easyiot.base.executor.DeviceExecutorService;
  *
  */
 @ProvideDeviceRest(version = "1.0.0")
-@RequireWebSecurity(version = "1.0.0")
 @Component(service = Servlet.class, property = {
 		HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_SELECT + "=("
 				+ HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_NAME + "=devicesContext)",

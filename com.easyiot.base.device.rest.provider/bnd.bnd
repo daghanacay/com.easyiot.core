@@ -9,7 +9,8 @@ Bundle-Description: 				\
 	In order to use this bundle you need to configure the security as defined in the read me. 
 
 Private-Package: \
-	com.easyiot.base.device.rest.provider
+	com.easyiot.base.device.rest.provider,\
+	com.easyiot.base.device.rest.security
 	
 -buildpath: \
 	osgi.enroute.base.api;version=1.0,\

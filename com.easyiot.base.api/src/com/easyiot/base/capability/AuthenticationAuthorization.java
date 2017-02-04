@@ -9,19 +9,19 @@ import aQute.bnd.annotation.headers.RequireCapability;
 /**
  * A web security bundle is added to the deployment.
  */
-public interface WebSecurity {
+public interface AuthenticationAuthorization {
 	public static final String HTTPS_SECURITY = "https_security";
 
 	@ProvideCapability(ns = EasyiotNamespace.NS, name = HTTPS_SECURITY)
 	@Retention(RetentionPolicy.CLASS)
-	public @interface ProvideWebSecurity {
+	public @interface ProvideAuthenticationAuthorization {
 		String version() default "1.0.0";
 	}
 
 	@RequireCapability(ns = EasyiotNamespace.NS, filter = "(&(" + EasyiotNamespace.NS + "=" + HTTPS_SECURITY
 			+ ")${frange;${version}})")
 	@Retention(RetentionPolicy.CLASS)
-	public @interface RequireWebSecurity {
+	public @interface RequireAuthenticationAuthorization {
 		/**
 		 * Version of the required security bundle
 		 * 

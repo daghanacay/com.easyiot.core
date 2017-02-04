@@ -1,4 +1,4 @@
-package com.easyiot.base.security.provider.context;
+package com.easyiot.base.device.rest.security;
 
 import java.io.IOException;
 import java.util.Base64;
@@ -13,15 +13,12 @@ import org.osgi.service.http.whiteboard.HttpWhiteboardConstants;
 import org.osgi.service.useradmin.User;
 import org.osgi.service.useradmin.UserAdmin;
 
-import com.easyiot.base.capability.WebSecurity.ProvideWebSecurity;
-
 /**
  * Handles the security for devices endpoint
  * 
  * @author daghan
  *
  */
-@ProvideWebSecurity(version = "1.0.0")
 @Component(service = ServletContextHelper.class, property = {
 		HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_NAME + "=devicesContext",
 		HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_PATH + "=/easyiot" })
@@ -29,14 +26,10 @@ public class DeviceContextHelper extends ServletContextHelper {
 	@Reference
 	private UserAdmin userAdmin;
 
+	private User user;
+
 	@Override
 	public boolean handleSecurity(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// Check if we use https
-		if (!request.getScheme().equals("https")) {
-			response.sendError(HttpServletResponse.SC_FORBIDDEN);
-			return false;
-		}
-		// check if we have authentication header. if not ask for authentication
 		// i.e. Basic authentication
 		if (request.getHeader("Authorization") == null) {
 			response.addHeader("WWW-Authenticate", "Basic");
@@ -45,7 +38,12 @@ public class DeviceContextHelper extends ServletContextHelper {
 		}
 		// Check if authenticated
 		if (authenticated(request, response)) {
-			return true;
+			if (authorized(request, response)) {
+				return true;
+			} else {
+				response.sendError(HttpServletResponse.SC_FORBIDDEN);
+				return false;
+			}
 		} else {
 			response.addHeader("WWW-Authenticate", "Basic");
 			response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
@@ -54,16 +52,26 @@ public class DeviceContextHelper extends ServletContextHelper {
 
 	}
 
+	private boolean authorized(HttpServletRequest request, HttpServletResponse response) {
+		if (request.getMethod().equalsIgnoreCase("GET") && userAdmin.getAuthorization(user).hasRole("readDevice")) {
+			return true;
+		} else if (request.getMethod().equalsIgnoreCase("POST")
+				&& userAdmin.getAuthorization(user).hasRole("writeDevice")) {
+			return true;
+		}
+		return false;
+	}
+
 	protected boolean authenticated(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String authzHeader = request.getHeader("Authorization");
-		String usernameAndPassword = new String(Base64.getDecoder().decode(authzHeader.substring(6).getBytes()));
+		String usernameAndPassword = new String(Base64.getDecoder().decode(authzHeader.substring(6)));
 
 		int userNameIndex = usernameAndPassword.indexOf(":");
 		String username = usernameAndPassword.substring(0, userNameIndex);
 		String password = usernameAndPassword.substring(userNameIndex + 1);
 
 		// Check if the password matches
-		User user = (User) userAdmin.getRole(username);
+		user = (User) userAdmin.getRole(username);
 		if (user == null) {
 			response.addHeader("WWW-Authenticate", "Basic");
 			response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
