@@ -15,18 +15,24 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.fluent.Request;
 import org.apache.http.entity.ContentType;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.easyiot.base.api.Device;
+import com.easyiot.base.capability.AuthenticationAuthorization.RequireAuthenticationAuthorization;
 import com.easyiot.base.capability.DeviceRest.RequireDeviceRest;
 import com.easyiot.base.test.util.IntegrationTestBase;
 
+import osgi.enroute.configurer.api.RequireConfigurerExtender;
+import osgi.enroute.webserver.capabilities.RequireWebServerExtender;
+
 @RequireDeviceRest
+@RequireWebServerExtender
+@RequireAuthenticationAuthorization
+@RequireConfigurerExtender
 public class RestTest extends IntegrationTestBase {
 
 	@BeforeClass
-	public static void prepareTestClass() throws IOException {
+	public static void prepareTestClass() throws IOException, InterruptedException {
 		Map<String, String> config = new HashMap<>();
 		config.put("org.apache.felix.http.enable", "true");
 		config.put("org.osgi.service.http.port", "8080");
@@ -88,6 +94,8 @@ public class RestTest extends IntegrationTestBase {
 
 		context.registerService(Device.class, myService, null);
 		context.registerService(Device.class, myTypedService, null);
+		
+		Thread.sleep(100);
 	}
 
 	@Test

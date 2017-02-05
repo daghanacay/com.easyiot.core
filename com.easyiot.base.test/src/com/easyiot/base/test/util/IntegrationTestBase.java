@@ -1,11 +1,14 @@
 package com.easyiot.base.test.util;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.io.IOException;
 import java.util.Dictionary;
 import java.util.Hashtable;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.junit.Test;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.FrameworkUtil;
 import org.osgi.framework.ServiceReference;

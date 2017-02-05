@@ -25,7 +25,8 @@ import osgi.enroute.dto.api.TypeReference;
 
 @ProvideAuthenticationAuthorization(version = "1.0.0")
 @Designate(ocd = AuthenticationConfiguration.class)
-@Component(name = "com.easyiot.security", immediate = true, configurationPolicy = ConfigurationPolicy.REQUIRE)
+@Component(service = {
+		UserAdminConfigurator.class }, name = "com.easyiot.security", immediate = true, configurationPolicy = ConfigurationPolicy.REQUIRE)
 public class UserAdminConfigurator {
 	private AuthenticationConfiguration config;
 

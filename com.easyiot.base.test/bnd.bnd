@@ -11,8 +11,6 @@ Private-Package: \
 	com.easyiot.base.test,\
 	com.easyiot.base.test.util
 
-Test-Cases: ${test-cases}
-
 
 -includeresource: {readme.md}
 

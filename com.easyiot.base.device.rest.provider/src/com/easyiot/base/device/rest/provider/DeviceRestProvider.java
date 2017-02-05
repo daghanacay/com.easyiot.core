@@ -20,6 +20,8 @@ import com.easyiot.base.api.exception.NoSuchDeviceException;
 import com.easyiot.base.capability.DeviceRest.ProvideDeviceRest;
 import com.easyiot.base.executor.DeviceExecutorService;
 
+import osgi.enroute.webserver.capabilities.RequireWebServerExtender;
+
 /**
  * Maps all the device methods to rest api
  * 
@@ -27,6 +29,7 @@ import com.easyiot.base.executor.DeviceExecutorService;
  *
  */
 @ProvideDeviceRest(version = "1.0.0")
+@RequireWebServerExtender
 @Component(service = Servlet.class, property = {
 		HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_SELECT + "=("
 				+ HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_NAME + "=devicesContext)",

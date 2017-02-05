@@ -2,12 +2,16 @@ package com.easyiot.base.device.rest.security;
 
 import java.io.IOException;
 import java.util.Base64;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
+import org.osgi.service.event.Event;
+import org.osgi.service.event.EventConstants;
+import org.osgi.service.event.EventHandler;
 import org.osgi.service.http.context.ServletContextHelper;
 import org.osgi.service.http.whiteboard.HttpWhiteboardConstants;
 import org.osgi.service.useradmin.User;
@@ -19,35 +23,42 @@ import org.osgi.service.useradmin.UserAdmin;
  * @author daghan
  *
  */
-@Component(service = ServletContextHelper.class, property = {
+@Component(service = { ServletContextHelper.class, EventHandler.class }, property = {
+		EventConstants.EVENT_TOPIC + "=org/osgi/framework/ServiceEvent/*",
 		HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_NAME + "=devicesContext",
 		HttpWhiteboardConstants.HTTP_WHITEBOARD_CONTEXT_PATH + "=/easyiot" })
-public class DeviceContextHelper extends ServletContextHelper {
+public class DeviceContextHelper extends ServletContextHelper implements EventHandler {
 	@Reference
 	private UserAdmin userAdmin;
+
+	private AtomicBoolean secureServiceAvailable = new AtomicBoolean(false);
 
 	private User user;
 
 	@Override
 	public boolean handleSecurity(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		// i.e. Basic authentication
-		if (request.getHeader("Authorization") == null) {
-			response.addHeader("WWW-Authenticate", "Basic");
-			response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
-			return false;
-		}
-		// Check if authenticated
-		if (authenticated(request, response)) {
-			if (authorized(request, response)) {
-				return true;
+		if (secureServiceAvailable.get()) {
+			// i.e. Basic authentication
+			if (request.getHeader("Authorization") == null) {
+				response.addHeader("WWW-Authenticate", "Basic");
+				response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+				return false;
+			}
+			// Check if authenticated
+			if (authenticated(request, response)) {
+				if (authorized(request, response)) {
+					return true;
+				} else {
+					response.sendError(HttpServletResponse.SC_FORBIDDEN);
+					return false;
+				}
 			} else {
-				response.sendError(HttpServletResponse.SC_FORBIDDEN);
+				response.addHeader("WWW-Authenticate", "Basic");
+				response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
 				return false;
 			}
 		} else {
-			response.addHeader("WWW-Authenticate", "Basic");
-			response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
-			return false;
+			return true;
 		}
 
 	}
@@ -78,6 +89,19 @@ public class DeviceContextHelper extends ServletContextHelper {
 			return false;
 		}
 		return ((String) user.getCredentials().get("password")).equals(password);
+
+	}
+
+	@Override
+	public void handleEvent(Event event) {
+		if (((String[]) event.getProperty("service.objectClass"))[0]
+				.equals("com.easyiot.base.security.provider.auth.UserAdminConfigurator")) {
+			if (event.getTopic().endsWith("REGISTERED")) {
+				this.secureServiceAvailable.set(true);
+			} else {
+				this.secureServiceAvailable.set(false);
+			}
+		}
 
 	}
 }
