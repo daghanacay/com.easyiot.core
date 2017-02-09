@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1486548925000" name="Release" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1486636565000" name="Release" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.easyiot.base.api"/>
@@ -76,21 +76,21 @@
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.easyiot.base.configuration.admin.application"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="version" type="Version" value="1.0.0.201702090932"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="a4c48d71718721537b8a277d4206946987cfde081c4dac2ce87adf1436a135ab"/>
+      <attribute name="osgi.content" value="4979c6bed536157741db34b461a36469f0ef23ffae419d01e05bff936d7b076d"/>
       <attribute name="url" value="com.easyiot.base.configuration.admin.application/com.easyiot.base.configuration.admin.application-1.0.0.jar"/>
-      <attribute name="size" type="Long" value="9821"/>
+      <attribute name="size" type="Long" value="9820"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="osgi.wiring.bundle" value="com.easyiot.base.configuration.admin.application"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201702090932"/>
     </capability>
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="com.easyiot.base.configuration.admin.application"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201702090932"/>
     </capability>
     <capability namespace="osgi.enroute.webresource">
       <attribute name="root" value="static"/>
@@ -852,40 +852,47 @@
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.easyiot.base.provider"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="version" type="Version" value="1.0.0.201702090938"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="e1a201e0d981ed263e8abb8a1dad3caa6d2b7084c627e1a146c6a9123844c0f5"/>
+      <attribute name="osgi.content" value="bf4205c187e3e8af8bb9bf894edb6536f9b7b50b5ddd31bf9485bb62b817be16"/>
       <attribute name="url" value="com.easyiot.base.provider/com.easyiot.base.provider-1.0.0.jar"/>
-      <attribute name="size" type="Long" value="23401"/>
+      <attribute name="size" type="Long" value="27439"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="osgi.wiring.bundle" value="com.easyiot.base.provider"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201702090938"/>
     </capability>
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="com.easyiot.base.provider"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201702090938"/>
+    </capability>
+    <capability namespace="osgi.wiring.package">
+      <attribute name="osgi.wiring.package" value="com.easyiot.base.util"/>
+      <attribute name="version" type="Version" value="1.0.0"/>
+      <attribute name="bundle-symbolic-name" value="com.easyiot.base.provider"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201702090938"/>
+      <directive name="uses" value="org.osgi.framework"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="com.easyiot.base.api"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.provider"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201702090938"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="com.easyiot.base.executor"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.provider"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201702090938"/>
       <directive name="uses" value="com.easyiot.base.api,com.easyiot.base.api.exception"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="com.easyiot.base.api.exception"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.provider"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201702090938"/>
     </capability>
     <capability namespace="osgi.service">
       <attribute name="objectClass" type="List&lt;String&gt;" value="com.easyiot.base.executor.DeviceExecutorService"/>
@@ -902,6 +909,15 @@
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=com.easyiot.base.executor)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.service.cm)(version&gt;=1.5.0)(!(version&gt;=2.0.0)))"/>
+    </requirement>
+    <requirement namespace="osgi.wiring.package">
+      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.tracker)(version&gt;=1.5.0)(!(version&gt;=2.0.0)))"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=osgi.enroute.dto.api)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>

@@ -32,6 +32,7 @@ Private-Package:  \
 	org.apache.felix.configadmin;version='[1.8.8,1.8.9)',\
 	org.apache.felix.scr;version='[2.0.2,2.0.3)'
 Export-Package: \
+	com.easyiot.base.util,\
 	com.easyiot.base.api,\
 	com.easyiot.base.executor,\
 	com.easyiot.base.api.exception
