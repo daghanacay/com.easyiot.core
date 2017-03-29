@@ -87,7 +87,9 @@ public class AdminImpl implements REST {
 			tempDefNew.name = tempDef.getName();
 			tempDefNew.optional = !(tempDef.getCardinality() == 0);
 			tempDefNew.type = tempDef.getType();
-			tempDefNew.value = tempDef.getDefaultValue()[0];
+			if (tempDef.getDefaultValue() != null && tempDef.getDefaultValue().length > 0) {
+				tempDefNew.value = tempDef.getDefaultValue()[0];
+			}
 			returnVal.add(tempDefNew);
 		}
 		return returnVal;
@@ -113,7 +115,8 @@ public class AdminImpl implements REST {
 	/**
 	 * Returns all the properties of a saved configuration.
 	 * 
-	 * http://localhost:8080/rest/getDeviceOrProtocolInstancePropertiesMeta/{pid}
+	 * http://localhost:8080/rest/getDeviceOrProtocolInstancePropertiesMeta/{
+	 * pid}
 	 * 
 	 * @param pid
 	 * @return
@@ -133,9 +136,10 @@ public class AdminImpl implements REST {
 		// update metadata with the pid configurations
 		for (Enumeration<String> e = conf.getProperties().keys(); e.hasMoreElements();) {
 			String key = e.nextElement();
-			// Search the prperty metadata that matches the key in the property 
+			// Search the prperty metadata that matches the key in the property
 			returnVal.properties.stream().filter(propMeta -> propMeta.id.equals(key)).findFirst()
-			// update the value of the PropertyMetadata with the value of the key
+					// update the value of the PropertyMetadata with the value
+					// of the key
 					.ifPresent(foundMeta -> foundMeta.value = (String) conf.getProperties().get(key));
 		}
 		return returnVal;
