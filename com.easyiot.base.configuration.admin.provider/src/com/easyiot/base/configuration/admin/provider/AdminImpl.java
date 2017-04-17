@@ -179,7 +179,12 @@ public class AdminImpl implements REST {
 
 	public void putDeviceOrProtocolInstanceProperties(PropertyRequest request, String pid) throws IOException {
 		Hashtable<String, String> temp = new Hashtable<String, String>();
-		temp.putAll(request._body());
+		// remove all the null elements in the request to cater for default
+		// values.
+		Map<String, String> nunNullValues = request._body().entrySet().stream().filter(e -> e.getValue() != null)
+				.collect(Collectors.toMap(p -> p.getKey(), p -> p.getValue()));
+
+		temp.putAll(nunNullValues);
 
 		cm.getConfiguration(pid, "?").update(temp);
 	}
