@@ -21,7 +21,9 @@ Test-Cases: ${test-cases}
 	com.easyiot.base.api;version=latest,\
 	com.easyiot.base.test;version=latest,\
 	org.apache.httpcomponents.httpclient;version=4.5,\
-	org.apache.httpcomponents:httpcore;version=4.4
+	org.apache.httpcomponents:httpcore;version=4.4,\
+	com.easyiot.base.provider;version=latest,\
+	com.easyiot.base.security.provider;version=latest
 
 -runrequires: \
 	osgi.identity;filter:='(osgi.identity=com.easyiot.base.device.rest.test)'
