@@ -37,7 +37,8 @@ public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 			DeviceExecutorMethodTypeEnum methodType) throws NoSuchMethodException, NoSuchDeviceException {
 		boolean deviceFound = false;
 		if (_devices.size() == 0) {
-			throw new NoSuchDeviceException(deviceId + " does not exists. Please check your application configuration.");
+			throw new NoSuchDeviceException(
+					deviceId + " does not exists. Please check your application configuration.");
 		}
 
 		for (Device deviceService : _devices) {
@@ -74,10 +75,14 @@ public class DeviceExecutorServiceImpl implements DeviceExecutorService {
 								// methodParamType and input itself is already a
 								// String then do the conversion to input object
 								if (!input.getClass().isAssignableFrom(methodParamType) && input instanceof String) {
+									// If the string does not have all teh
+									// relevant fields then the default field
+									// values from the DTO is used. e.g.
+									// {"redValue":"LOW"} will convert to
+									// {"redValue":"LOW", "blueValue":"HIGH",
+									// "greenValue":"LOW"} for a DTO that has
+									// default field values
 									input = (I) dtoservice.decoder(methodParamType).get((String) input);
-									if (dtoservice.deepEquals(input, methodParamType.newInstance())) {
-										throw new Exception("message cannot be parsed");
-									}
 								}
 								if (method.getReturnType().getName().equals("void")) {
 									// if the device has void method then invoke
