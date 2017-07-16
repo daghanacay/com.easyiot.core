@@ -1,71 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<repository increment="1493110179000" name="Release" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
+<repository increment="1500192753000" name="Release" xmlns="http://www.osgi.org/xmlns/repository/v1.0.0">
   <resource>
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.easyiot.base.api"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="bf701803d72add8406fd193b359208d96b8f1b540871d98945f313c762f576f2"/>
+      <attribute name="osgi.content" value="ae4dd2a04e9f72e5a1d3de43a2539862f6e73228d94d18c64c54f3468f7d581c"/>
       <attribute name="url" value="com.easyiot.base.api/com.easyiot.base.api-1.0.0.jar"/>
-      <attribute name="size" type="Long" value="31490"/>
+      <attribute name="size" type="Long" value="27450"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="osgi.wiring.bundle" value="com.easyiot.base.api"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="com.easyiot.base.api"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="com.easyiot.base.api"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.api"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="com.easyiot.base.api.exception"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.api"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="com.easyiot.base.executor"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.api"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="com.easyiot.base.api,com.easyiot.base.api.exception"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="com.easyiot.base.capability"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.api"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
-    </capability>
-    <capability namespace="osgi.wiring.package">
-      <attribute name="osgi.wiring.package" value="com.easyiot.base.util"/>
-      <attribute name="version" type="Version" value="1.0.0"/>
-      <attribute name="bundle-symbolic-name" value="com.easyiot.base.api"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
-      <directive name="uses" value="org.osgi.framework"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=com.easyiot.base.api)(version&gt;=1.0.0)(!(version&gt;=1.1.0)))"/>
     </requirement>
     <requirement namespace="osgi.wiring.package">
       <directive name="filter" value="(&amp;(osgi.wiring.package=com.easyiot.base.api.exception)(version&gt;=1.0.0)(!(version&gt;=2.0.0)))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.framework)(version&gt;=1.8.0)(!(version&gt;=2.0.0)))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.service.cm)(version&gt;=1.5.0)(!(version&gt;=2.0.0)))"/>
-    </requirement>
-    <requirement namespace="osgi.wiring.package">
-      <directive name="filter" value="(&amp;(osgi.wiring.package=org.osgi.util.tracker)(version&gt;=1.5.0)(!(version&gt;=2.0.0)))"/>
     </requirement>
     <requirement namespace="compile-only"/>
     <requirement namespace="osgi.ee">
@@ -76,21 +60,21 @@
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.easyiot.base.configuration.admin.application"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="1.0.0.201704171107"/>
+      <attribute name="version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="cb6e0556911b5f7c0107a8a986c9a7789c82c8e6c47e9d00f81e83409acac960"/>
+      <attribute name="osgi.content" value="2a5b5ae43c9975ba8c87323f34e454a85b10c6091d1fd7bbc3cdf145bab0cea1"/>
       <attribute name="url" value="com.easyiot.base.configuration.admin.application/com.easyiot.base.configuration.admin.application-1.0.0.jar"/>
-      <attribute name="size" type="Long" value="9820"/>
+      <attribute name="size" type="Long" value="9821"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="osgi.wiring.bundle" value="com.easyiot.base.configuration.admin.application"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201704171107"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="com.easyiot.base.configuration.admin.application"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201704171107"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.enroute.webresource">
       <attribute name="root" value="static"/>
@@ -130,21 +114,21 @@
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.easyiot.base.configuration.admin.provider"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="1.0.0.201704171107"/>
+      <attribute name="version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="9039772ccb7f32ffa417864579fab7f233fec625b552ce125aafe6e3fac265e0"/>
+      <attribute name="osgi.content" value="726fc0f39f613b09815c586aeca8dd1afed6abadb7df8fb1de2ba15166f0233b"/>
       <attribute name="url" value="com.easyiot.base.configuration.admin.provider/com.easyiot.base.configuration.admin.provider-1.0.0.jar"/>
-      <attribute name="size" type="Long" value="29175"/>
+      <attribute name="size" type="Long" value="29117"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="osgi.wiring.bundle" value="com.easyiot.base.configuration.admin.provider"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201704171107"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="com.easyiot.base.configuration.admin.provider"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201704171107"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.service">
       <attribute name="objectClass" type="List&lt;String&gt;" value="com.easyiot.base.configuration.admin.provider.AdminImpl,osgi.enroute.rest.api.REST"/>
@@ -252,39 +236,39 @@
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.easyiot.base.device.rest.provider"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="8a1d39ea4466e87623d2874b27701aceeb34b4c3a3c05bf8c6945ff625715764"/>
+      <attribute name="osgi.content" value="3cb1094e5ef7a2e048a102bb0dc11128741ae193276e91789696c251dd680091"/>
       <attribute name="url" value="com.easyiot.base.device.rest.provider/com.easyiot.base.device.rest.provider-1.0.0.jar"/>
-      <attribute name="size" type="Long" value="29518"/>
+      <attribute name="size" type="Long" value="29494"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="osgi.wiring.bundle" value="com.easyiot.base.device.rest.provider"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="com.easyiot.base.device.rest.provider"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="com.easyiot.base.api"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.provider"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="com.easyiot.base.api.exception"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.provider"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="com.easyiot.base.executor"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.provider"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="com.easyiot.base.api,com.easyiot.base.api.exception"/>
     </capability>
     <capability namespace="osgi.service">
@@ -381,283 +365,283 @@
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.easyiot.base.device.rest.test"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="1a9d7c89f4ef217c923cdbd08b127da7b33ec5f7c91bedb693c5a909ef66fdfa"/>
+      <attribute name="osgi.content" value="35d63d4e1359343d9ff889d4dd20462d429128eb95d5173289921a7400210a11"/>
       <attribute name="url" value="com.easyiot.base.device.rest.test/com.easyiot.base.device.rest.test-1.0.0.jar"/>
-      <attribute name="size" type="Long" value="981643"/>
+      <attribute name="size" type="Long" value="981556"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="osgi.wiring.bundle" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.client.fluent"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.auth,org.apache.http.client,org.apache.http.concurrent,org.apache.http.conn.scheme,org.apache.http.entity,org.apache.http.impl.client"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http.params,org.apache.http.protocol,org.apache.http.util"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.auth"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.config,org.apache.http.params,org.apache.http.protocol,org.ietf.jgss"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.client"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.auth,org.apache.http.client.methods,org.apache.http.conn,org.apache.http.conn.routing,org.apache.http.cookie,org.apache.http.params,org.apache.http.protocol"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.auth.params"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http.params"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.cookie.params"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http.params"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.client.config"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.client.entity"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.entity"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.client.params"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.auth.params,org.apache.http.client.config,org.apache.http.conn.params,org.apache.http.cookie.params,org.apache.http.params"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.conn.params"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.conn.routing,org.apache.http.params"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.conn.routing"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.protocol"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.conn.util"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.cookie"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.config,org.apache.http.params,org.apache.http.protocol"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.impl"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.config,org.apache.http.entity,org.apache.http.impl.entity,org.apache.http.io,org.apache.http.params,org.apache.http.protocol"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.impl.cookie"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.conn.util,org.apache.http.cookie,org.apache.http.message,org.apache.http.params,org.apache.http.protocol,org.apache.http.util"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.impl.entity"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.entity,org.apache.http.io"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.impl.execchain"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.client,org.apache.http.client.methods,org.apache.http.client.protocol,org.apache.http.conn,org.apache.http.conn.routing,org.apache.http.protocol"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.impl.io"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.config,org.apache.http.io,org.apache.http.message,org.apache.http.params,org.apache.http.util"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.io"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.config,org.apache.http.util"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.params"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.config"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.pool"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http.concurrent"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.ssl"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="javax.net.ssl"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.client.methods"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.client.config,org.apache.http.concurrent,org.apache.http.conn,org.apache.http.message,org.apache.http.params"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.client.protocol"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.auth,org.apache.http.client,org.apache.http.client.config,org.apache.http.client.entity,org.apache.http.config,org.apache.http.conn.routing,org.apache.http.cookie,org.apache.http.protocol"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.client.utils"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.client,org.apache.http.client.methods,org.apache.http.conn.routing,org.apache.http.util"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.concurrent"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.config"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.conn"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="javax.net.ssl,org.apache.http,org.apache.http.concurrent,org.apache.http.config,org.apache.http.conn.routing,org.apache.http.conn.scheme,org.apache.http.entity,org.apache.http.params,org.apache.http.protocol"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.conn.scheme"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.conn,org.apache.http.params"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.conn.socket"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.protocol"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.conn.ssl"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="javax.net.ssl,org.apache.http,org.apache.http.conn,org.apache.http.conn.scheme,org.apache.http.conn.socket,org.apache.http.conn.util,org.apache.http.params,org.apache.http.protocol,org.apache.http.ssl"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.entity"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.impl.auth"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.commons.logging,org.apache.http,org.apache.http.auth,org.apache.http.client,org.apache.http.params,org.apache.http.protocol,org.apache.http.util,org.ietf.jgss"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.impl.client"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="javax.net.ssl,org.apache.commons.logging,org.apache.http,org.apache.http.auth,org.apache.http.client,org.apache.http.client.config,org.apache.http.client.entity,org.apache.http.client.methods,org.apache.http.concurrent,org.apache.http.config,org.apache.http.conn,org.apache.http.conn.routing,org.apache.http.conn.socket,org.apache.http.conn.ssl,org.apache.http.conn.util,org.apache.http.cookie,org.apache.http.impl,org.apache.http.impl.auth,org.apache.http.impl.execchain,org.apache.http.message,org.apache.http.params,org.apache.http.pool,org.apache.http.protocol"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.impl.conn"/>
       <attribute name="version" type="Version" value="4.5.2"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="javax.net.ssl,org.apache.commons.logging,org.apache.http,org.apache.http.config,org.apache.http.conn,org.apache.http.conn.routing,org.apache.http.conn.scheme,org.apache.http.conn.socket,org.apache.http.entity,org.apache.http.impl,org.apache.http.impl.io,org.apache.http.io,org.apache.http.message,org.apache.http.params,org.apache.http.pool,org.apache.http.protocol,org.apache.http.util"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.message"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.params,org.apache.http.util"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.protocol"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http,org.apache.http.params"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="org.apache.http.util"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.device.rest.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.apache.http"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
@@ -852,47 +836,47 @@
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.easyiot.base.provider"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="1.0.0.201702090938"/>
+      <attribute name="version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="bf4205c187e3e8af8bb9bf894edb6536f9b7b50b5ddd31bf9485bb62b817be16"/>
+      <attribute name="osgi.content" value="1a71c58a7997cff7f8391f660ffc78e1184400309060900c3cbb027288230dd8"/>
       <attribute name="url" value="com.easyiot.base.provider/com.easyiot.base.provider-1.0.0.jar"/>
-      <attribute name="size" type="Long" value="27439"/>
+      <attribute name="size" type="Long" value="27418"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="osgi.wiring.bundle" value="com.easyiot.base.provider"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702090938"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="com.easyiot.base.provider"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702090938"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="com.easyiot.base.util"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.provider"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702090938"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="org.osgi.framework"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="com.easyiot.base.api"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.provider"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702090938"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="com.easyiot.base.executor"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.provider"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702090938"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
       <directive name="uses" value="com.easyiot.base.api,com.easyiot.base.api.exception"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="com.easyiot.base.api.exception"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.provider"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702090938"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.service">
       <attribute name="objectClass" type="List&lt;String&gt;" value="com.easyiot.base.executor.DeviceExecutorService"/>
@@ -957,21 +941,21 @@
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.easyiot.base.security.provider"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="5fb275c2fb91bae21801609ade5a004a76e46c35b6b3e400f74a67dc1ae07530"/>
+      <attribute name="osgi.content" value="3cd0cf7db4379450c2fe2fa0e27fedabec69583137478b9b4571446bbf3a953d"/>
       <attribute name="url" value="com.easyiot.base.security.provider/com.easyiot.base.security.provider-1.0.0.jar"/>
-      <attribute name="size" type="Long" value="17675"/>
+      <attribute name="size" type="Long" value="17688"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="osgi.wiring.bundle" value="com.easyiot.base.security.provider"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="com.easyiot.base.security.provider"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201707160812"/>
     </capability>
     <capability namespace="osgi.service">
       <attribute name="objectClass" type="List&lt;String&gt;" value="com.easyiot.base.security.provider.auth.UserAdminConfigurator"/>
@@ -1025,27 +1009,27 @@
     <capability namespace="osgi.identity">
       <attribute name="osgi.identity" value="com.easyiot.base.test"/>
       <attribute name="type" value="osgi.bundle"/>
-      <attribute name="version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="version" type="Version" value="1.0.0.201704301103"/>
     </capability>
     <capability namespace="osgi.content">
-      <attribute name="osgi.content" value="871d49dc672f819e378666dfc2e29ad39f382b1265964a03a09dfc7f1c0334ff"/>
+      <attribute name="osgi.content" value="1589b4d7b3e92a55e059644aee088c51b3615789bdefa2db25c651a0ebd7ed42"/>
       <attribute name="url" value="com.easyiot.base.test/com.easyiot.base.test-1.0.0.jar"/>
-      <attribute name="size" type="Long" value="5697"/>
+      <attribute name="size" type="Long" value="5695"/>
       <attribute name="mime" value="application/vnd.osgi.bundle"/>
     </capability>
     <capability namespace="osgi.wiring.bundle">
       <attribute name="osgi.wiring.bundle" value="com.easyiot.base.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201704301103"/>
     </capability>
     <capability namespace="osgi.wiring.host">
       <attribute name="osgi.wiring.host" value="com.easyiot.base.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201704301103"/>
     </capability>
     <capability namespace="osgi.wiring.package">
       <attribute name="osgi.wiring.package" value="com.easyiot.base.test.util"/>
       <attribute name="version" type="Version" value="1.0.0"/>
       <attribute name="bundle-symbolic-name" value="com.easyiot.base.test"/>
-      <attribute name="bundle-version" type="Version" value="1.0.0.201702051139"/>
+      <attribute name="bundle-version" type="Version" value="1.0.0.201704301103"/>
       <directive name="uses" value="org.osgi.framework"/>
     </capability>
     <requirement namespace="osgi.wiring.package">
